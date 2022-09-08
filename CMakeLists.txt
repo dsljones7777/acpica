@@ -226,9 +226,33 @@ set(header_files
 	"source/include/acuuid.h"
 	"source/include/amlcode.h"
 	"source/include/amlresrc.h")
-
+set(platform_header_files
+	"source/include/platform/accygwin.h"
+	"source/include/platform/acdragonfly.h"
+	"source/include/platform/acdragonflyex.h"
+	"source/include/platform/acefi.h"
+	"source/include/platform/acefiex.h"
+	"source/include/platform/acenv.h"
+	"source/include/platform/acenvex.h"
+	"source/include/platform/acfreebsd.h"
+	"source/include/platform/acgcc.h"
+	"source/include/platform/acgccex.h"
+	"source/include/platform/achaiku.h"
+	"source/include/platform/acintel.h"
+	"source/include/platform/aclinux.h"
+	"source/include/platform/aclinuxex.h"
+	"source/include/platform/acmacosx.h"
+	"source/include/platform/acmsvc.h"
+	"source/include/platform/acmsvcex.h"
+	"source/include/platform/acnetbsd.h"
+	"source/include/platform/acos2.h"
+	"source/include/platform/acqnx.h"
+	"source/include/platform/acwin.h"
+	"source/include/platform/acwin64.h"
+	"source/include/platform/acpvmos.h")
 set(all_files 
 	${header_files}
+	${platform_header_files}
 	${dispatcher_sources}
 	${event_sources}
 	${executer_sources}
@@ -242,3 +266,6 @@ set(all_files
 add_library(${PROJECT_NAME} STATIC ${all_files})
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/source/include")
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Config)
