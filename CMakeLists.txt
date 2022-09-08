@@ -113,7 +113,7 @@ set(parser_sources
 	"source/components/parser/pswalk.c"
 	"source/components/parser/psxface.c")
 
-set(resources_sources
+set(resource_sources
 	"source/components/resources/rsaddr.c"
 	"source/components/resources/rscalc.c"
 	"source/components/resources/rscreate.c"
@@ -250,6 +250,17 @@ set(platform_header_files
 	"source/include/platform/acwin.h"
 	"source/include/platform/acwin64.h"
 	"source/include/platform/acpvmos.h")
+source_group("Header" FILES ${header_files})
+source_group("Header/Platform" FILES ${platform_header_files})
+source_group("Source/Dispatcher" FILES ${dispatcher_sources})
+source_group("Source/Event" FILES ${event_sources})
+source_group("Source/Executer" FILES ${executer_sources})
+source_group("Source/Hardware" FILES ${hardware_sources})
+source_group("Source/Namespace" FILES ${namespace_sources})
+source_group("Source/Parser" FILES ${parser_sources})
+source_group("Source/Resource" FILES ${resource_sources})
+source_group("Source/Tables" FILES ${tables_sources})
+source_group("Source/Utilities" FILES ${utilities_sources})
 set(all_files 
 	${header_files}
 	${platform_header_files}
@@ -259,7 +270,7 @@ set(all_files
 	${hardware_sources}
 	${namespace_sources}
 	${parser_sources}
-	${resources_sources}
+	${resource_sources}
 	${tables_sources}
 	${utilities_sources})
 
