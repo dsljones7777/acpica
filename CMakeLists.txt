@@ -1,0 +1,2 @@
+project(pVMOS_acpica)
+
