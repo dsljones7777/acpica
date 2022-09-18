@@ -1,4 +1,4 @@
-project(acpica)
+project(acpica C)
 
 set(dispatcher_sources 
 	"source/components/dispatcher/dsargs.c"
@@ -144,7 +144,7 @@ set(tables_sources
 	"source/components/tables/tbxfload.c"
 	"source/components/tables/tbxfroot.c")
 
-set(utilies_sources
+set(utilities_sources
 	"source/components/utilities/utaddress.c"
 	"source/components/utilities/utalloc.c"
 	"source/components/utilities/utascii.c"
@@ -166,7 +166,7 @@ set(utilies_sources
 	"source/components/utilities/utmath.c"
 	"source/components/utilities/utmisc.c"
 	"source/components/utilities/utmutex.c"
-	"source/components/utilities/utnonascii.c"
+	"source/components/utilities/utnonansi.c"
 	"source/components/utilities/utobject.c"
 	"source/components/utilities/utosi.c"
 	"source/components/utilities/utownerid.c"
@@ -250,6 +250,8 @@ set(platform_header_files
 	"source/include/platform/acwin.h"
 	"source/include/platform/acwin64.h"
 	"source/include/platform/acpvmos.h")
+set(source_files
+	"functions.cpp")
 source_group("Header" FILES ${header_files})
 source_group("Header/Platform" FILES ${platform_header_files})
 source_group("Source/Dispatcher" FILES ${dispatcher_sources})
@@ -261,6 +263,7 @@ source_group("Source/Parser" FILES ${parser_sources})
 source_group("Source/Resource" FILES ${resource_sources})
 source_group("Source/Tables" FILES ${tables_sources})
 source_group("Source/Utilities" FILES ${utilities_sources})
+source_group("Source" FILES ${source_files})
 set(all_files 
 	${header_files}
 	${platform_header_files}
@@ -272,11 +275,16 @@ set(all_files
 	${parser_sources}
 	${resource_sources}
 	${tables_sources}
-	${utilities_sources})
+	${utilities_sources}
+	${source_files})
 
 add_library(${PROJECT_NAME} STATIC ${all_files})
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/source/include")
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
-
-target_link_libraries(${PROJECT_NAME} PRIVATE Config)
+if(MSVC)
+	target_compile_options(${PROJECT_NAME} PRIVATE 
+			"/GR-"
+			"/GS-")
+endif()
+target_link_libraries(${PROJECT_NAME} PRIVATE Config std Memory)

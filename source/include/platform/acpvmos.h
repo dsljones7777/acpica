@@ -4,6 +4,8 @@
 
 
 #include "types.h"
+
+
 /* Common (in-kernel/user-space) ACPICA configuration */
 #define ACPI_USE_SYSTEM_CLIBRARY
 #define ACPI_USE_DO_WHILE_0
