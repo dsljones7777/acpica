@@ -36,7 +36,7 @@
 
 
 
-#define ACPI_SPINLOCK                   uint64 volatile
+#define ACPI_SPINLOCK                   void *
 
 #define ACPI_SEMAPHORE                  uint64 volatile
 
