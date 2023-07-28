@@ -106,14 +106,14 @@ extern "C" int isxdigit(int arg)
 
 extern "C" int toupper(int arg)
 {
-	if (arg >= 'a' && arg <= 'z')
-		return arg  ^ 0x40;
+	if ((arg >= 'a') && (arg <= 'z'))
+		return arg  ^ 0x20;
 	return arg;
 }
 
 extern "C" int isdigit(int arg)
 {
-	if (arg >= '0' && arg <= '9')
+	if ((arg >= '0') && (arg <= '9'))
 		return true;
 	else
 		return false;
@@ -137,7 +137,7 @@ extern "C" int isspace(int ch)
 
 extern "C" int tolower(int arg)
 {
-	if (arg >= 'A' && arg <= 'X')
-		return arg | 0x40;
+	if (arg >= 'A' && arg <= 'Z')
+		return arg | 0x20;
 	return arg;
 }

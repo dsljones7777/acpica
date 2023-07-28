@@ -283,8 +283,6 @@ add_library(${PROJECT_NAME} STATIC ${all_files})
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/source/include")
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
 if(MSVC)
-	target_compile_options(${PROJECT_NAME} PRIVATE 
-			"/GR-"
-			"/GS-")
+	target_compile_options(${PROJECT_NAME} PRIVATE /GR- /GS-)
 endif()
-target_link_libraries(${PROJECT_NAME} PRIVATE Config std Memory)
+target_link_libraries(${PROJECT_NAME} PRIVATE Config pvmos_std Memory)
