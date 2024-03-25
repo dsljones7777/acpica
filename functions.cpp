@@ -41,13 +41,13 @@ extern "C" int memcmp(const void* ptr1, const void* ptr2, size_t num)
 	}
 	return 0;
 }
-extern "C" void* memset(void* ptr, int value, size_t num)
-{
-	char* charPtr = static_cast<char*>(ptr);
-	for (size_t i = 0; i < num; i++)
-		charPtr[i] = static_cast<char>(value);
-	return ptr;
-}
+//extern "C" void* memset(void* ptr, int value, size_t num)
+//{
+//	char* charPtr = static_cast<char*>(ptr);
+//	for (size_t i = 0; i < num; i++)
+//		charPtr[i] = static_cast<char>(value);
+//	return ptr;
+//}
 extern "C" size_t strlen(const char* str)
 {
 	size_t len = 0;
@@ -65,10 +65,10 @@ extern "C" char* strcpy(char* destination, const char* source)
 	}
 	return destination;
 }
-extern "C" void* memcpy(void* destination, const void* source, size_t num)
-{
-	return std::memcpy(destination, source, num);
-}
+//extern "C" void* memcpy(void* destination, const void* source, size_t num)
+//{
+//	return std::memcpy(destination, source, num);
+//}
 extern "C" char* strcat(char* destination, const char* source)
 {
 	size_t index;

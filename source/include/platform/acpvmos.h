@@ -36,9 +36,9 @@
 
 
 
-#define ACPI_SPINLOCK                   void *
+#define ACPI_SPINLOCK                   void*
 
-#define ACPI_SEMAPHORE                  uint64 volatile
+#define ACPI_SEMAPHORE                  void*
 
 /*
 #define ACPI_MSG_ERROR          KERN_ERR "ACPI Error: "
